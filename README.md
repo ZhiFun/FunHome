@@ -1,9 +1,13 @@
 # FunHome
 DIY design of smart home hardware based on Home Assistant.
 It will include a variety of DIY smart home hardware: smart lights, smart switches, various sensors, automation devices, etc., and will be continuously updated.
-  a. Provides CAD files for direct 3D printing;
-  b. Offers hardware design for PCB fabrication;
-  c. Provides YAML configuration code for configuring corresponding functions in ESPHome .
+
+  a. Provides CAD files for direct 3D printing.
+  
+  b. Offers hardware design for PCB fabrication.
+  
+  c. Provides YAML configuration code for configuring corresponding functions in ESPHome.
+  
   (for usage instructions, refer to:https://www.bilibili.com/video/BV14ryhYHEJK/?spm_id_from=333.999.0.0&vd_source=eef55077bd933049fd878e3b9b8782e2) 
 
 funHomeLight：
