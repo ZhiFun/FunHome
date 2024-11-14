@@ -11,6 +11,8 @@ It will include a variety of DIY smart home hardware: smart lights, smart switch
   (for usage instructions, refer to:https://www.bilibili.com/video/BV14ryhYHEJK/?spm_id_from=333.999.0.0&vd_source=eef55077bd933049fd878e3b9b8782e2) 
 
 
+
+
 funHomeLight：
 A night light based on ESP32-C3 + WS2812 + DS18B20, capable of displaying multiple colors, various display effects, timed on/off, temperature protection, and other features.
 
