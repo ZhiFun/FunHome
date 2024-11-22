@@ -1,0 +1,11 @@
+
+captive_portal:
+
+sensor:
+  - platform: dht
+    pin: GPIO7
+    temperature:
+      name: "T温度"
+    humidity:
+      name: "H湿度"
+    update_interval: 10s    
