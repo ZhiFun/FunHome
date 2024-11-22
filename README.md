@@ -20,4 +20,9 @@ cad: https://a360.co/3APonfi
 ![屏幕截图 2024-11-07 221104](https://github.com/user-attachments/assets/1ad908f7-0097-48d4-a8ec-24b2109bc733)
 
 
+funHomeSensorTH：
+The funHomeSensorTH is based on the ESP32-C3 + DHT11 and integrates temperature and humidity data acquisition functionality, with configurable reporting frequency.
+
+cad: https://a360.co/3CE3DYF
+![屏幕截图 2024-11-22 225247](https://github.com/user-attachments/assets/32765efd-7b67-4092-997a-e17d7f22604b)
 
