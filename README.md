@@ -13,14 +13,14 @@ It will include a variety of DIY smart home hardware: smart lights, smart switch
 
 
 
-[1] funHomeLight：
+【1】 funHomeLight：
 A night light based on ESP32-C3 + WS2812 + DS18B20, capable of displaying multiple colors, various display effects, timed on/off, temperature protection, and other features.
 
 cad: https://a360.co/3APonfi
 ![屏幕截图 2024-11-07 221104](https://github.com/user-attachments/assets/1ad908f7-0097-48d4-a8ec-24b2109bc733)
 
 
-[2] funHomeSensorTH：
+【2】funHomeSensorTH：
 The funHomeSensorTH is based on the ESP32-C3 + DHT11 and integrates temperature and humidity data acquisition functionality, with configurable reporting frequency.
 
 cad: https://a360.co/3CE3DYF
