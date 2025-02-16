@@ -1,0 +1,94 @@
+
+# captive_portal:
+  
+# sensor:
+# # 光照传感器配置
+#   - platform: adc
+#     pin: GPIO0
+#     id: temt6000_sensor
+#     name: "TEMT6000 Illuminance"
+#     device_class: illuminance
+#     unit_of_measurement: lx
+#     update_interval: 24h
+#     attenuation: 12db
+#     filters:
+#       - lambda: |-
+#           return (x / 10000.0) * 2000000.0;
+
+# LED 控制配置
+output:
+  - platform: gpio
+    pin: GPIO10
+    id: gpio10_led
+
+# 舵机 PWM 输出配置
+  - platform: ledc
+    pin: GPIO7
+    frequency: 50Hz
+    id: pwm_output
+
+# 舵机控制配置
+servo:
+  - id: sg90_servo
+    output: pwm_output
+    min_level: 2.5%  # 调整最小脉宽信号
+    max_level: 12.5%  # 调整最大脉宽信号
+
+# 舵机逻辑开关
+switch:
+  - platform: template
+    name: "SG90 Servo Control Switch"
+    id: sg90_servo_switch  # 修复：定义 ID
+    turn_on_action:
+      - output.turn_on: pwm_output # 打开PWM    
+      - switch.turn_on: sg90_power  # 打开 GPIO6
+      - delay: 100ms  # 确保电源已开启   
+      - output.turn_on: gpio10_led  # 打开 GPIO10 LED
+      - delay: 50ms  # 闪烁持续时间
+      - output.turn_off: gpio10_led # 关闭 GPIO10 LED       
+      - servo.write:
+          id: sg90_servo
+          level: !lambda 'return 0.3;'   
+      - delay: 200ms  # 保持位置 200 毫秒
+      - servo.write:
+          id: sg90_servo
+          level: !lambda 'return 0;'    # 恢复到中间
+      - delay: 200ms               
+      - switch.turn_off: sg90_power  # 关闭 GPIO6
+      - output.turn_off: pwm_output  # 关闭PWM
+
+    turn_off_action:
+      - output.turn_on: pwm_output # 打开PWM
+      - switch.turn_on: sg90_power  # 打开 GPIO6               
+      - delay: 100ms  # 确保电源已开启
+      - output.turn_on: gpio10_led  # 打开 GPIO10 LED
+      - delay: 50ms  # 闪烁持续时间
+      - output.turn_off: gpio10_led # 关闭 GPIO10 LED
+      - servo.write:
+          id: sg90_servo
+          level: !lambda 'return -0.3;'
+      - delay: 200ms  # 保持位置 200 毫秒
+      - servo.write:
+          id: sg90_servo
+          level: !lambda 'return 0;'    # 恢复到中间
+      - delay: 200ms             
+      - switch.turn_off: sg90_power  # 关闭 GPIO6
+      - output.turn_off: pwm_output  # 关闭PWM
+
+  - platform: gpio
+    pin: GPIO6
+    id: sg90_power
+    name: "SG90 Power"
+
+# 内部变量
+globals:
+  - id: pre_action_illuminance
+    type: float
+    restore_value: no
+    initial_value: '0.0'
+
+# # 设置 ESP32 进入低功耗模式
+# deep_sleep:
+#   id: deep_sleep_1
+#   run_duration: 5s
+#   sleep_duration: 5s
