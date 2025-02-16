@@ -26,3 +26,8 @@ The funHomeSensorTH is based on the ESP32-C3 + DHT11 and integrates temperature 
 cad: https://a360.co/3CE3DYF
 ![屏幕截图 2024-11-22 225247](https://github.com/user-attachments/assets/32765efd-7b67-4092-997a-e17d7f22604b)
 
+【3】funHomeSwitch：
+funHomeSwitch is composed of modules such as the ES32C3, SG90 servo, ambient light sensor, lithium battery, etc. It can be installed on a standard 86-type switch and used with Home Assistant for remote light control.
+![屏幕截图 2025-02-16 144558](https://github.com/user-attachments/assets/a02d762e-d9a6-40ef-9645-6d92aab0bfed)
+
+
