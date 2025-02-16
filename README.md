@@ -28,6 +28,7 @@ cad: https://a360.co/3CE3DYF
 
 【3】funHomeSwitch：
 funHomeSwitch is composed of modules such as the ES32C3, SG90 servo, ambient light sensor, lithium battery, etc. It can be installed on a standard 86-type switch and used with Home Assistant for remote light control.
+cad: https://a360.co/4gaNJ6r
 ![屏幕截图 2025-02-16 144558](https://github.com/user-attachments/assets/a02d762e-d9a6-40ef-9645-6d92aab0bfed)
 
 
