@@ -32,8 +32,10 @@ funHomeSwitch is composed of modules such as the ES32C3, SG90 servo, ambient lig
 cad: https://a360.co/4gaNJ6r
 ![屏幕截图 2025-02-16 144558](https://github.com/user-attachments/assets/a02d762e-d9a6-40ef-9645-6d92aab0bfed)
 
-【3】funHomeFan：
+【4】funHomeFan：
 The funHomeFan is an intelligent small fan project based on the ESP32C3, which can be remotely controlled via a smartphone to adjust the fan speed with 3 adjustable levels.
+
 cad: https://a360.co/4jmC1qw
-<img width="1046" alt="1748446036092" src="https://github.com/user-attachments/assets/6e23c43e-b528-48aa-b115-457160a8ce23" />
+<img width="1424" alt="1748446110438" src="https://github.com/user-attachments/assets/485a521a-fe67-4b89-8a62-0fd0d2eb5358" />
+
 
