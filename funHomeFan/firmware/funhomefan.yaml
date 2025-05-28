@@ -1,0 +1,95 @@
+esphome:
+  name: funhomefan
+  friendly_name: FunHomeFan
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "G/ZIVpCw63O8yG0l7PWNVvbDQVeg6mvT9Cy0aqF+dM4="
+
+ota:
+  - platform: esphome
+    password: "07a231b4c8a9fac816316f242841bc7f"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Funhomefan Fallback Hotspot"
+    password: "vLgge6NVBtYY"
+
+captive_portal:
+    
+output:
+  - platform: ledc
+    pin: GPIO6  
+    frequency: 25000 Hz
+    id: fan_pwm
+
+fan:
+  - platform: speed
+    output: fan_pwm
+    name: "PWM风扇三档"
+    speed_count: 3  # 三个档位
+    on_speed_set:
+      then:
+        - lambda: |-
+            if (x == 0) {
+              id(fan_pwm).set_level(0.0);  // 关闭风扇
+            } else if (x == 1) {
+              id(fan_pwm).set_level(0.95);  
+            } else if (x == 2) {
+              id(fan_pwm).set_level(0.97); 
+            } else if (x == 3) {
+              id(fan_pwm).set_level(1.0);  
+            }  
+
+# number:
+#   - platform: template
+#     name: "PWM风扇"
+#     id: fan_speed_slider
+#     min_value: 0
+#     max_value: 100
+#     step: 1
+#     unit_of_measurement: "%"
+#     set_action:
+#       then:
+#         - output.set_level:
+#             id: fan_pwm
+#             level: !lambda 'return x / 100.0;'
+
+
+number:
+  - platform: template
+    name: "PWM风扇"
+    id: fan_speed_slider
+    min_value: 0
+    max_value: 100
+    step: 1
+    unit_of_measurement: "%"
+    set_action:
+      then:
+        - lambda: |-
+            if (x <= 0) {
+              id(fan_pwm).set_level(0.0);  // 关闭风扇
+            } else {
+              // 启动辅助脉冲：先全速运转
+              id(fan_pwm).set_level(1.0);
+            }
+        - delay: 300ms  # 等待风扇成功起转
+        - lambda: |-
+            if (x > 0) {
+              // 启动后设定目标占空比（80%~100%）
+              float level = 0.8 + (x - 1) * 0.2 / 99.0;
+              id(fan_pwm).set_level(level);
+            }
