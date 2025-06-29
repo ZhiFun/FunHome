@@ -38,4 +38,11 @@ The funHomeFan is an intelligent small fan project based on the ESP32C3, which c
 cad: https://a360.co/4jmC1qw
 <img width="1424" alt="1748446110438" src="https://github.com/user-attachments/assets/485a521a-fe67-4b89-8a62-0fd0d2eb5358" />
 
+【5】funHomePcController：
+The funHomePcController is based on the ESP32-C3 and allows one-click remote control of a computer’s power on/off, with support for low power consumption.
+
+cad: https://a360.co/3GjO7Dl
+![屏幕截图 2025-06-29 195953](https://github.com/user-attachments/assets/83e7724a-8874-434d-a785-82f64a035583)
+
+
 
